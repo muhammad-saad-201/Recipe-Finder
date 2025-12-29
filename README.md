@@ -1,16 +1,119 @@
-# React + Vite
+# 🍲 Recipe Finder App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Discover and explore delicious recipes from around the world. Search, browse, and view full recipe details with ease.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 1️⃣ Core Features
 
-## React Compiler
+**Search Recipes by Name**
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+- Input box to type recipe keywords (e.g., “chicken”, “pasta”).
 
-## Expanding the ESLint configuration
+**List Recipes**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Recipes displayed in a responsive grid with:
+
+  - Recipe image
+  - Name/title
+  - Short description or snippet of ingredients
+
+**Recipe Details Page**
+
+- Click a recipe to view:
+
+  - Full ingredients list
+  - Cooking instructions
+  - Servings / cooking time
+  - Optional source link
+
+**Loading & Error States**
+
+- Spinner while fetching data
+- Handle “no results found”
+
+**Pagination**
+
+- Load more results dynamically
+- Fetch additional recipes without refreshing the page
+
+---
+
+## 🔹 Pages / Routes (React Router)
+
+- `/` → Home / Search page
+- `/recipe/:id` → Recipe detail page
+
+---
+
+## 🛠️ Components
+
+- `SearchBar` → Input + search button
+- `RecipeCard` → Display recipe info
+- `RecipeList` → Grid/list of RecipeCards
+- `RecipeDetail` → Full recipe instructions
+- `Header` → App title / navigation
+- `Loader` → Loading spinner
+- `Error` → Error messages
+
+---
+
+## 🌐 Free API
+
+**TheMealDB (Recommended)**
+
+- Free, no API key required
+- Endpoints:
+
+  - Search: `https://www.themealdb.com/api/json/v1/1/search.php?s=chicken`
+  - Lookup by ID: `https://www.themealdb.com/api/json/v1/1/lookup.php?i=52772`
+  - Random: `https://www.themealdb.com/api/json/v1/1/random.php`
+
+**Example Response:**
+
+```json
+{
+  "meals": [
+    {
+      "idMeal": "52772",
+      "strMeal": "Teriyaki Chicken Casserole",
+      "strInstructions": "...",
+      "strMealThumb": "https://www.themealdb.com/images/media/meals/wvpsxx1468256321.jpg",
+      "strIngredient1": "soy sauce",
+      "strMeasure1": "3/4 cup"
+    }
+  ]
+}
+```
+
+> ✅ Focus on React + Tailwind logic without backend hassle
+
+---
+
+## 🏗️ Suggested Project Structure
+
+```
+src/
+├─ components/
+│  ├─ SearchBar.jsx
+│  ├─ RecipeCard.jsx
+│  ├─ RecipeList.jsx
+│  └─ RecipeDetail.jsx
+├─ pages/
+│  ├─ Home.jsx
+│  └─ RecipePage.jsx
+├─ App.jsx
+└─ api/
+   └─ mealdb.js   // axios calls / fetch logic
+```
+
+---
+
+## 🎯 Key Learning Outcomes
+
+- Fetch data from APIs using axios
+- React Router for page navigation
+- Component reuse & props management
+- Conditional rendering (loading, error, no results)
+- Responsive UI with TailwindCSS
+- Pagination for dynamic recipe lists
